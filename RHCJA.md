@@ -4,7 +4,7 @@
 `sudo useradd --no-create-home --shel /bin/false/ jboss-eap`
 
 - 2.Set the JBOSS_HOME AND JBOSS_USER
-`sudo vim  /opt/jboss-eap/bin/init.d/jboss-eap.conf`
+`sudo vim /opt/jboss-eap/bin/init.d/jboss-eap.conf`
 
 - 3 - Copy the service files
 `sudo cp /opt/jboss-eap/bin/init.d/jboss-eap.conf /etc/default/`
