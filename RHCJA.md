@@ -39,14 +39,15 @@ The port-offset attribute can be changed without editing standalone.xml by
 using the jboss.socket.binding.port-offset property on the command line.
 For example:
 $ ./standalone.sh -Djboss.socket.binding.port-offset=10000
-
+ 
+ 
 Using a customized configuration file
 
 Copy the following folders from /opt/jboss-eap-7.0/standalone into the new EAP
 location /home/student/JB248/labs/custom-eap:
-• configuration
-• deployments
-• lib
+* configuration
+* deployments
+* lib
 
 [student@workstation ~]$ cd /opt/jboss-eap-7.0/standalone
 [student@workstation standalone]$ cp -r configuration deployments lib \
@@ -169,19 +170,19 @@ To connect to a different host machine, use the --controller argument:
 
 
 The following operations are very common:
-• :read-resource: Reads a model resource's attribute values and either basic or complete information about any child resources.
+* :read-resource: Reads a model resource's attribute values and either basic or complete information about any child resources.
 
-• :read-operation-names: Gets the names of all the operations for the given resource.
+* :read-operation-names: Gets the names of all the operations for the given resource.
 
-• :read-operation-description: Gets the description of given operation.
+* :read-operation-description: Gets the description of given operation.
 
-• :reload: Reloads the server by shutting down all its services and starting them again. The JVM itself is not restarted.
+* :reload: Reloads the server by shutting down all its services and starting them again. The JVM itself is not restarted.
 
-• :read-attribute: Gets the value of an attribute for the selected resource.
+* :read-attribute: Gets the value of an attribute for the selected resource.
 
-• :write-attribute: Sets the value of an attribute for the selected resource.
+* :write-attribute: Sets the value of an attribute for the selected resource.
 
-• :remove: Removes the node.
+* :remove: Removes the node.
 
 
 Execução de um comando a partir de um script externo
@@ -195,7 +196,7 @@ A entrada para a CLI é uma estrutura hierárquica que começa no nível do serv
 independente. Por exemplo, para visualizar as configurações no nível mais alto, digite o seguinte comando:
 /:read-resource
 
-A barra “/” é usada para separar níveis. Por exemplo, o comando a seguir lê os recursos
+A barra "/" é usada para separar níveis. Por exemplo, o comando a seguir lê os recursos
 da interface pública:
 
 /interface=public:read-resource
@@ -258,16 +259,16 @@ Jboss root > /opt/jboss-eap/bin/add-user.sh -u "teddy" -p 'pokavergonha' -g 'dev
 Implantação usando a CLI
 
 
-• file_path: caminho do aplicativo a ser implantado.
-• --url: URL onde o conteúdo da implantação está disponível para upload no repositório de
+* file_path: caminho do aplicativo a ser implantado.
+* --url: URL onde o conteúdo da implantação está disponível para upload no repositório de
 conteúdo da implantação.
-• --name: o nome exclusivo da implantação. Se não for especificado um nome, o nome do
+* --name: o nome exclusivo da implantação. Se não for especificado um nome, o nome do
 arquivo será utilizado.
-• --runtime-name: opcional, define o nome do tempo de execução da implantação.
-• --force: se a implantação com o nome especificado já existir, por padrão a implantação
+* --runtime-name: opcional, define o nome do tempo de execução da implantação.
+* --force: se a implantação com o nome especificado já existir, por padrão a implantação
 será cancelada e a mensagem correspondente será exibida. O --force (-f) força a
 substituição da implantação existente por outra especificada nos argumentos do comando.
-• --disabled : indica que a implantação tem que ser adicionada ao repositório em estado
+* --disabled : indica que a implantação tem que ser adicionada ao repositório em estado
 desativado.
 
 ################################
@@ -475,16 +476,16 @@ CONFIGURING SERVERS IN A MANAGED DOMAIN
 
 
 Understanding hosts and servers
-• Domain controller: Responsible for all configuration management using profiles.
+* Domain controller: Responsible for all configuration management using profiles.
 
-• Host controller: Responsible for managing server instances. In a production environment, a
+* Host controller: Responsible for managing server instances. In a production environment, a
 host controller is usually installed on a separate host (physical or VM).
 
-• Server Groups: A logical grouping of EAP server instances that are configured and managed
+* Server Groups: A logical grouping of EAP server instances that are configured and managed
 together as a single unit. Server groups can span any number of servers across multiple host
 controllers.
 
-• Server: Responsible for running JavaEE applications (JAR, EAR, WAR files).
+* Server: Responsible for running JavaEE applications (JAR, EAR, WAR files).
 
 (A server cannot be part of multiple server groups.)
 
@@ -665,25 +666,25 @@ configuração de registro em log assíncrono
 Configure Journals and Other Settings
 
 Os diários têm as seguintes propriedades:
-• O diário consiste em um conjunto de arquivos no sistema de arquivos de sua máquina.
-• Cada arquivo é criado com um tamanho fixo e recebe preenchimento para maximizar o
+* O diário consiste em um conjunto de arquivos no sistema de arquivos de sua máquina.
+* Cada arquivo é criado com um tamanho fixo e recebe preenchimento para maximizar o
 desempenho de acesso ao disco.
-• As mensagens são acrescentadas ao diário. O conjunto de arquivos de diário é lido e gravado como um buffer de anéis para que o espaço de mensagens já consumidas seja
+* As mensagens são acrescentadas ao diário. O conjunto de arquivos de diário é lido e gravado como um buffer de anéis para que o espaço de mensagens já consumidas seja
 reutilizado por novas mensagens publicadas.
-• Quando um arquivo de diário está cheio, o ActiveMQ passa para o seguinte. Se não houver arquivos de diário vazios restantes, o ActiveMQ criará um novo.
-• O ActiveMQ também tem um algoritmo de compactação que recupera o espaço usado por
+* Quando um arquivo de diário está cheio, o ActiveMQ passa para o seguinte. Se não houver arquivos de diário vazios restantes, o ActiveMQ criará um novo.
+* O ActiveMQ também tem um algoritmo de compactação que recupera o espaço usado por
 mensagens já consumidas e elimina a fragmentação nos diários de mensagens. Isso pode
 deixar alguns arquivos de diário vazios e elegíveis para remoção.
-• O diário também tem suporte completo a operações transacionais se necessário,
+* O diário também tem suporte completo a operações transacionais se necessário,
 suportando tanto transações locais como XA
 
 
 Tratamento de falhas de entrega de mensagens
 Os objetos address-setting do ActiveMQ permitem ao administrador definir:
-• Um tempo de atraso para entregar novamente uma mensagem com falha, na esperança de
+* Um tempo de atraso para entregar novamente uma mensagem com falha, na esperança de
 que o problema não ocorra na próxima tentativa, usando o atributo redelivery-delay.
 
-• Um destino para encaminhamento da mensagem após um número de falhas de tentativa
+* Um destino para encaminhamento da mensagem após um número de falhas de tentativa
 de entrega, usando os atributos max-delivery-attempts e dead-letter-address.
 
 As configurações padrão de messaging-activemq incluem a seguinte definição de
@@ -802,28 +803,28 @@ The web.xml file allows users to configure the security of the application, by c
 restrictions to specific paths, restricting based on roles, and defining the authentication type.
 
 <security-constraint>
-	<web-resource-collection>
-		<web-resource-name>All resources</web-resource-name>
-		<url-pattern>/*</url-pattern>
-	</web-resource-collection>
-	<auth-constraint>
-		<role-name>*</role-name>
-	</auth-constraint>
+    <web-resource-collection>
+        <web-resource-name>All resources</web-resource-name>
+        <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>*</role-name>
+    </auth-constraint>
 </security-constraint>
 
 The <login-config> tag within the web.xml defines the type of authentication to be used.
 
 <login-config>
-	<auth-method>BASIC</auth-method>
+    <auth-method>BASIC</auth-method>
 </login-config>
 
 
 Steps:
 - Configuring a data source
 - Authentication Module.
-	/subsystem=security/security-domain\
-	=bksecurity/authentication\
-	=classic:add
+    /subsystem=security/security-domain\
+    =bksecurity/authentication\
+    =classic:add
 - Create a login module that will connect to the datasource created in the previous step.
 [standalone@localhost:9990] /subsystem=security/security-domain=bksecurity/\
 authentication=classic/login-module=database:add( \
@@ -907,12 +908,12 @@ access to the configuration files.
 5. Reference the stored attribute in the server configuration file.
 
 
-• alias: The alias is a unique identifier for the vault or other data stored in the keystore.
-• keyalg: The algorithm to use for encryption.
-• storetype: The keystore type. jceks is the recommended type.
-• keysize The size of the encryption key which determines the difficulty in brute forcing the
+* alias: The alias is a unique identifier for the vault or other data stored in the keystore.
+* keyalg: The algorithm to use for encryption.
+* storetype: The keystore type. jceks is the recommended type.
+* keysize The size of the encryption key which determines the difficulty in brute forcing the
 key.
-• keystore: The file path and file name in which the keystore's values are stored.
+* keystore: The file path and file name in which the keystore's values are stored.
 
 1
 [student@workstation ~]$ keytool -genseckey -alias vault \
@@ -1080,12 +1081,12 @@ To create a new keystore within a self-signed certificate, use the following com
 
 
 The following parameters were specified:
-• genkeypair: Responsible for defining that a new self-signed certificate should be created.
-• alias: Defines the certificate name inside the keystore.
-• storetype: Defines the type of the keystore.
-• keyalg: Specifies the algorithm to be used to generate the certificate.
-• keysize: Specifies the size of each key to be generated.
-• keystore: Defines where the keystore should be saved.
+* genkeypair: Responsible for defining that a new self-signed certificate should be created.
+* alias: Defines the certificate name inside the keystore.
+* storetype: Defines the type of the keystore.
+* keyalg: Specifies the algorithm to be used to generate the certificate.
+* keysize: Specifies the size of each key to be generated.
+* keystore: Defines where the keystore should be saved.
 
 The previous command requests two passwords. The first is the password to open the identity keystore and the second is to access the appserver certificate. Use the same value for both passwords to enable the HTTPS protocol in EAP 7
 
@@ -1184,11 +1185,11 @@ command:
 /profile=ha/subsystem=undertow/configuration=filter/mod_cluster=lb:add(\
 management-socket-binding=http, advertise-socket-binding=modcluster)
 
-• management-socket-binding: informs Undertow where to receive connection information
+* management-socket-binding: informs Undertow where to receive connection information
 and load balance metrics from back-end web servers. It should point to the socket-binding
 where EAP receives HTTP requests, which is http by default.
 
-• advertise-socket-binding informs Undertow where to send advertisement messages,
+* advertise-socket-binding informs Undertow where to send advertisement messages,
 that is, the multicast address and UDP port, by referring to a socket-binding name.
 
 After creating the filter, it should be enabled in the desired Undertow (virtual) hosts:
